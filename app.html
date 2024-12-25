@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        form {
+            margin: 50px auto;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        #hackButton {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="secret.html" method="POST">
+        <h2>Let's hack</h2>
+        <input type="text" name="username" placeholder="Identifiant" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        
+        <!-- Bouton submit normal avec validation -->
+        <input type="submit" value="Submit" onclick="return validateForm()">
+        
+        <!-- Bouton caché qui bypass la validation -->
+        <input type="submit" id="hackButton" value="Submit" formnovalidate>
+    </form>
+
+    <script>
+        function validateForm() {
+            // Validation côté client
+            var username = document.getElementsByName('username')[0].value;
+            var password = document.getElementsByName('password')[0].value;
+            
+            if (username.length < 5) {
+                alert("L'identifiant doit faire au moins 5 caractères");
+                return false;
+            }
+            if (password.length < 8) {
+                alert("Le mot de passe doit faire au moins 8 caractères");
+                return false;
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>
